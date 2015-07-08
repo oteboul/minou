@@ -50,6 +50,7 @@ div.messages_container > div.messages {
   vertical-align: top;
   width: 97%;
   padding-left: 5px;
+	padding-right: 5px;
   height: 100%;
   text-align: right;
 	overflow-y: scroll;

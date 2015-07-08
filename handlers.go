@@ -2,7 +2,7 @@
 package main
 
 import (
-  "fmt"
+  "log"
   "html/template"
   "net/http"
   "os"
@@ -13,7 +13,7 @@ func IMHandler(s *server) http.Handler {
   fn := func(w http.ResponseWriter, r *http.Request) {
     socket, err := s.upgrader.Upgrade(w, r, nil)
     if err != nil {
-      fmt.Println(err)
+      log.Println(err)
       return
     }
 
@@ -68,6 +68,9 @@ func clientHandler(w http.ResponseWriter, r *http.Request) {
 //==============================================================================
 func main() {
   port := os.Getenv("PORT")
+  if len(port) == 0 {
+    port = "8080"
+  }
 
   im_server := newServer()
   go im_server.run()
@@ -84,7 +87,7 @@ func main() {
     "/static/",
     http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
-  fmt.Println("Starting Server on port ", port)
+  log.Println("Starting Server on port ", port)
   http_err := http.ListenAndServe(":" + port, nil)
   if http_err != nil {
     panic("Error: " + http_err.Error())
