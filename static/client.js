@@ -1,6 +1,6 @@
 // The socket connection to the server.
 var socket = new WebSocket(
-  "ws://" + window.location.hostname + ":" + window.location.port + "/im");
+  "wss://" + window.location.hostname + ":" + window.location.port + "/im");
 
 // Who is online ?
 var online_users = {};
@@ -120,8 +120,6 @@ $(document).ready(function() {
     $("div.messages").append(
       "<hr>The connection with the server has been closed!<br><hr>");
   }
-
-  //DisplayUsers();
 
   // Send Message on clicking the button or on pressing enter.
 	$("input#send_button").click(function() {SendMessage(socket);});

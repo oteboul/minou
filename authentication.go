@@ -11,7 +11,7 @@ var conf = &oauth2.Config{
   ClientID: "156350471828-1gsbjgc046vtpj216fjhk4vgc4eski5d.apps.googleusercontent.com",
   ClientSecret: "Fiy_KYAW45Ln3txLE2t4M-UG",
   Scopes:[]string{"https://www.googleapis.com/auth/userinfo.profile"},
-  RedirectURL: "http://localhost:8080/oauth2callback",
+  RedirectURL: "/oauth2callback",
   Endpoint: oauth2.Endpoint{
     AuthURL: "https://accounts.google.com/o/oauth2/auth",
     TokenURL: "https://accounts.google.com/o/oauth2/token",
