@@ -1,0 +1,37 @@
+<html>
+
+  <head>
+  	<link rel="stylesheet" type="text/css" href="/static/minou.css">
+  	<title>Minou: the little chat.</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  </head>
+
+  <body>
+    <h1>Minou: the little chat of {{.User_id}}</h1>
+
+    <div class="conversation">
+      <h2 id="recipient"></h2>
+      <div class="messages_container">
+        <div class="messages"></div>
+      </div>
+      <div class="send_form">
+      	<form id="send">
+      		<input id="send_box" type="text" name="message">
+      		<input id="send_button" type="text" name="send_button" value="Send">
+        </form>
+      </div>
+    </div>
+
+    <div class="online_users">
+      <h2>Who's online?</h2>
+      <table id="users">
+      </table>
+    </div>
+
+    <script>
+      var me = {{.User_id}};
+    </script>
+    <script src="/static/client.js"></script>
+  </body>
+
+</html>

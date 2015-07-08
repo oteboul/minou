@@ -1,0 +1,32 @@
+<html>
+
+  <head>
+  	<link rel="stylesheet" type="text/css" href="/static/minou.css">
+  	<title>Minou: the little chat.</title>
+  </head>
+
+  <body>
+  	<h1>Minou: the little chat</h1>
+
+    <div class="external_login">
+      Choose a pill to swallow...
+      <form action="/google">
+        <input type="submit" name="google_login" value="Google">
+      </form>
+      <form action="/facebook">
+        <input type="submit" name="facebook_login" value="Facebook">
+      </form>
+    </div>
+
+    <hr>
+
+    <div class="internal_login">
+      ...Or just say who you wanna be :)<br>
+    	<form action="/login">
+    		<input type="text" name="user_name">
+        <input type="submit" name="internal_login" value="Login">
+      </form>
+    </div>
+
+  </body>
+</html>
