@@ -85,7 +85,7 @@ func main() {
     http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
   fmt.Println("Starting Server on port ", port)
-  http_err := http.ListenAndServe(port, nil)
+  http_err := http.ListenAndServe(":" + port, nil)
   if http_err != nil {
     panic("Error: " + http_err.Error())
   }
