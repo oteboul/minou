@@ -4,10 +4,8 @@ package main
 import (
   "flag"
   "fmt"
-  "gopkg.in/mgo.v2"
   "html/template"
   "net/http"
-  "os"
 )
 
 //==============================================================================
@@ -70,22 +68,11 @@ func clientHandler(w http.ResponseWriter, r *http.Request) {
 //==============================================================================
 func main() {
   // Flags
-  // var mgo_adress = flag.String(
-  //  "db_port", "27017", "The port of the MgoDB server")
   var port = flag.String(
     "port", ":8080", "the port where the im server will listen")
   flag.Parse()
 
-  // Connection to the MgoDB.
-  // session, db_err := mgo.Dial("localhost:" + *mgo_adress)
-  // if db_err != nil {
-  //  fmt.Printf("Can't connect to mongo.\n\tError: %v\n", db_err)
-  //  os.Exit(1)
-  // }
-  // defer session.Close()
-
-  // The Instant Messaging server.
-  im_server := newServer(nil) //session)
+  im_server := newServer()
   go im_server.run()
 
   // Handlers

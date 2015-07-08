@@ -1,8 +1,7 @@
 package main
- 
+
 import (
   "fmt"
-  "gopkg.in/mgo.v2"
   "github.com/gorilla/websocket"
   "net/http"
 )
@@ -16,17 +15,15 @@ type server struct {
   join chan *client
   leave chan *client
   messages chan *Message
-  mgo_session *mgo.Session
   upgrader *websocket.Upgrader
 }
 
-func newServer(session *mgo.Session) *server {
+func newServer() *server {
   return &server{
     messages: make(chan *Message),
     join:    make(chan *client),
     leave:   make(chan *client),
     clients: make(map[string]*client),
-    mgo_session: session,
     upgrader: &websocket.Upgrader{
       ReadBufferSize: 1024,
       WriteBufferSize: socketBufferSize,
@@ -63,7 +60,7 @@ func (s *server) run() {
 
     case client := <-s.leave:
       s.deleteClient(client.User_id)
-      
+
     case msg := <-s.messages:
       if len(msg.To) > 0 && len(msg.Text) > 0 {
         if other, ok := s.clients[msg.To]; ok {
