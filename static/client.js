@@ -1,5 +1,6 @@
 // The socket connection to the server.
-var socket = new WebSocket("ws://localhost:8080/im");
+var socket = new WebSocket(
+  "ws://" + window.location.hostname + ":" + window.location.port + "/im");
 
 // Who is online ?
 var online_users = {};

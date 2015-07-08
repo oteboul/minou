@@ -18,19 +18,6 @@ var conf = &oauth2.Config{
   },
 }
 
-/*
-var fb_conf = &oauth2.Config{
-  ClientID: "1598704317068431",
-  ClientSecret: "5d6237fb0389b8595901299b53d0798e",
-  Scopes:[]string{"email", "user_birthday", "user_location", "user_about_me"},
-  RedirectURL: "http://localhost:8080/oauth2callback",
-  Endpoint: oauth2.Endpoint{
-    AuthURL: "https://www.facebook.com/dialog/oauth",
-    TokenURL: "https://graph.facebook.com/oauth/access_token",
-  },
-}
-*/
-
 type GoogleProfile struct {
   Name string `json:name`
   GivenName string `json:given_name`
