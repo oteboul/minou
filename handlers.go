@@ -2,10 +2,10 @@
 package main
 
 import (
-  "flag"
   "fmt"
   "html/template"
   "net/http"
+  "os"
 )
 
 //==============================================================================
@@ -67,10 +67,7 @@ func clientHandler(w http.ResponseWriter, r *http.Request) {
 
 //==============================================================================
 func main() {
-  // Flags
-  var port = flag.String(
-    "port", ":8080", "the port where the im server will listen")
-  flag.Parse()
+  port := os.Getenv("PORT")
 
   im_server := newServer()
   go im_server.run()
@@ -87,8 +84,8 @@ func main() {
     "/static/",
     http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
-  fmt.Println("Starting Server on port ", *port)
-  http_err := http.ListenAndServe(*port, nil)
+  fmt.Println("Starting Server on port ", port)
+  http_err := http.ListenAndServe(port, nil)
   if http_err != nil {
     panic("Error: " + http_err.Error())
   }
